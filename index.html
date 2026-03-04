@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Complete Wealth Plan</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0F172A;color:#E2E8F0;min-height:100vh}
+.tnav{display:flex;background:#0B1120;border-bottom:2px solid #1E293B;overflow-x:auto;position:sticky;top:0;z-index:200}
+.tnb{padding:12px 16px;background:transparent;border:none;border-bottom:3px solid transparent;color:#64748B;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.tnb.on{border-bottom-color:#3B82F6;color:#F8FAFC;background:#0F172A}
+.snav{display:flex;background:#0F172A;border-bottom:1px solid #1E293B;overflow-x:auto;padding:0 14px}
+.snb{padding:8px 12px;background:transparent;border:none;border-bottom:2px solid transparent;color:#64748B;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+.snb.on{border-bottom-color:#60A5FA;color:#93C5FD}
+.sec{display:none}.sec.on{display:block}
+.tab{display:none}.tab.on{display:block}
+.wrap{max-width:760px;margin:0 auto;padding:18px}
+h1{font-size:20px;font-weight:700;color:#F8FAFC;margin-bottom:3px}
+h2{font-size:16px;font-weight:700;color:#F8FAFC;margin-bottom:10px}
+h3{font-size:13px;font-weight:600;color:#F8FAFC;margin-bottom:8px}
+.sub{color:#64748B;font-size:12px;margin-bottom:14px;line-height:1.5}
+.sg{display:grid;gap:8px;margin-bottom:14px}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.st{background:#1E293B;border-radius:8px;padding:10px;text-align:center}
+.sl{color:#64748B;font-size:9px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.sv{font-size:16px;font-weight:700}
+.card{background:#1E293B;border-radius:12px;padding:14px;margin-bottom:12px}
+.cred{background:#450A0A;border:1px solid #991B1B}
+.cgrn{background:#14532D;border:1px solid #166534}
+.cblu{background:#172554;border:1px solid #1E40AF}
+.cyel{background:#1C1917;border:1px solid #78350F}
+.fund{background:#1E293B;border-radius:10px;padding:11px 13px;margin-bottom:8px}
+.fh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px}
+.ft{font-weight:700;font-size:13px;color:#F8FAFC}
+.fd{color:#94A3B8;font-size:11px;margin-top:2px}
+.fgrn{color:#86EFAC;font-size:11px;margin-top:2px}
+.fyel{color:#FCD34D;font-size:11px;margin-top:2px}
+.abar{display:flex;border-radius:5px;overflow:hidden;height:26px;margin-bottom:12px}
+.bs{display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{padding:7px 5px;color:#64748B;font-weight:600;border-bottom:1px solid #334155}
+td{padding:7px 5px;border-bottom:1px solid #1E293B}
+.tl{text-align:left}.tc{text-align:center}
+.step{background:#1E293B;border-radius:8px;padding:11px 13px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.snum{border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;color:#fff}
+.badge{font-size:9px;padding:1px 5px;border-radius:3px;margin-left:6px;font-weight:700;vertical-align:middle}
+.tline{position:relative;padding-left:24px;border-left:2px solid #334155;margin-left:8px}
+.tnode{position:relative;margin-bottom:18px}
+.tdot{position:absolute;left:-32px;top:2px;width:14px;height:14px;border-radius:50%;border:2px solid #0F172A}
+.phase-card{border-radius:10px;padding:13px;margin-bottom:10px;border:1px solid #334155}
+.crash-row{display:flex;gap:8px;margin-bottom:8px}
+.crash-box{flex:1;background:#1E293B;border-radius:8px;padding:11px;text-align:center}
+.icard{background:#1E293B;border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid #334155}
+.ig{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+.ig2{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+.iw{display:flex;flex-direction:column;gap:4px}
+.il{color:#64748B;font-size:9px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.inp{background:#0F172A;border:1px solid #334155;border-radius:7px;color:#F8FAFC;font-size:14px;font-weight:700;padding:8px 10px;width:100%;font-family:inherit}
+.inp:focus{outline:none;border-color:#3B82F6}
+.calc-result{background:#0F172A;border-radius:10px;padding:14px;margin-bottom:10px}
+.cr-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1E293B}
+.cr-row:last-child{border-bottom:none}
+.cr-label{color:#94A3B8;font-size:12px}
+.cr-val{font-weight:700;font-size:13px}
+.rb-row{display:grid;grid-template-columns:1fr 70px 90px 90px 100px;gap:6px;align-items:center;padding:8px 0;border-bottom:1px solid #1E293B}
+.rb-head{color:#64748B;font-size:10px;font-weight:600;text-transform:uppercase}
+.rb-inp{background:#0F172A;border:1px solid #334155;border-radius:6px;color:#F8FAFC;font-size:12px;font-weight:600;padding:5px 7px;width:100%;font-family:inherit;text-align:right}
+.rb-inp:focus{outline:none;border-color:#3B82F6}
+.drift-grn{color:#10B981;font-weight:700;text-align:right}
+.drift-yel{color:#F59E0B;font-weight:700;text-align:right}
+.drift-red{color:#EF4444;font-weight:700;text-align:right}
+.action-buy{color:#10B981;font-weight:700;font-size:12px;text-align:right}
+.action-sell{color:#EF4444;font-weight:700;font-size:12px;text-align:right}
+.action-ok{color:#64748B;font-size:12px;text-align:right}
+@media(max-width:600px){.g4,.g3{grid-template-columns:repeat(2,1fr)}.ig{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="tnav">
+  <button class="tnb on" onclick="showSec('overview',this)">Overview</button>
+  <button class="tnb" onclick="showSec('barbell',this)">Barbell</button>
+  <button class="tnb" onclick="showSec('k401',this)">401(k)</button>
+  <button class="tnb" onclick="showSec('hsa',this)">HSA</button>
+  <button class="tnb" onclick="showSec('calcs',this)">Calculators</button>
+</div>
+
+<!-- OVERVIEW -->
+<div class="sec on" id="s-overview">
+<div class="snav">
+  <button class="snb on" onclick="showTab('overview','summary',this)">Summary</button>
+  <button class="snb" onclick="showTab('overview','location',this)">Asset Location</button>
+  <button class="snb" onclick="showTab('overview','backdoor',this)">Backdoor Roth</button>
+  <button class="snb" onclick="showTab('overview','tlh',this)">Tax Loss Harvest</button>
+  <button class="snb" onclick="showTab('overview','action',this)">Action Steps</button>
+</div>
+<div class="wrap">
+
+<div class="tab on" id="overview-summary">
+  <h1>Complete Wealth Plan</h1>
+  <p class="sub" id="ov-subtitle">Married Filing Jointly • 37% Bracket • W-2 + S-Corp • 20-Year Horizon</p>
+  <div class="icard">
+    <h3 style="margin-bottom:12px">Your Numbers</h3>
+    <div class="ig" style="margin-bottom:10px">
+      <div class="iw"><span class="il">Weekly Barbell $</span><input class="inp" id="g-weekly" type="number" value="2500" oninput="recalc()"></div>
+      <div class="iw"><span class="il">W-2 401(k) Balance $</span><input class="inp" id="g-w2bal" type="number" value="500000" oninput="recalc()"></div>
+      <div class="iw"><span class="il">Solo 401(k) Balance $</span><input class="inp" id="g-solobal" type="number" value="70000" oninput="recalc()"></div>
+    </div>
+    <div class="ig" style="margin-bottom:10px">
+      <div class="iw"><span class="il">HSA Balance $</span><input class="inp" id="g-hsabal" type="number" value="0" oninput="recalc()"></div>
+      <div class="iw"><span class="il">Spouse W-2 Salary (S-Corp) $</span><input class="inp" id="g-spousesal" type="number" value="75000" oninput="recalc()"></div>
+      <div class="iw"><span class="il">Tax Bracket %</span><input class="inp" id="g-bracket" type="number" value="37" oninput="recalc()"></div>
+    </div>
+    <div class="ig2">
+      <div class="iw"><span class="il">Current Age</span><input class="inp" id="g-age" type="number" value="40" oninput="recalc()"></div>
+      <div class="iw"><span class="il">Target Retirement Age</span><input class="inp" id="g-retage" type="number" value="60" oninput="recalc()"></div>
+    </div>
+  </div>
+  <div class="sg g3" id="ov-stats"></div>
+  <div class="card">
+    <h3>All Accounts</h3>
+    <table>
+      <thead><tr><th class="tl">Account</th><th class="tl">Allocation</th><th class="tc">Annual</th><th class="tc">Tax</th><th class="tc">Status</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#3B82F6;font-weight:700">Taxable Barbell</td><td style="color:#94A3B8;font-size:11px">SCHG/SCHD/AVUV/VXUS</td><td class="tc" id="ov-barbellann">$130K</td><td class="tc" style="color:#94A3B8">20% LTCG</td><td class="tc" style="color:#10B981">Running</td></tr>
+        <tr><td style="color:#10B981;font-weight:700">W-2 401(k)</td><td style="color:#94A3B8;font-size:11px">VSCPX/VIVIX/VTISF/VGINF/VEMRX</td><td class="tc">$34,000</td><td class="tc" style="color:#94A3B8">Tax-deferred</td><td class="tc" style="color:#10B981">Done</td></tr>
+        <tr><td style="color:#8B5CF6;font-weight:700">Solo 401(k)</td><td style="color:#94A3B8;font-size:11px">SCHG/SCHD/AVUV/VTV</td><td class="tc">~$70K</td><td class="tc" style="color:#94A3B8">Tax-deferred</td><td class="tc" style="color:#10B981">Done</td></tr>
+        <tr><td style="color:#F59E0B;font-weight:700">HSA</td><td style="color:#94A3B8;font-size:11px">WFSPX</td><td class="tc">$8,300</td><td class="tc" style="color:#94A3B8">Triple tax-free</td><td class="tc" style="color:#10B981">Invested</td></tr>
+        <tr><td style="color:#EC4899;font-weight:700">Backdoor Roth x2</td><td style="color:#94A3B8;font-size:11px">Pending</td><td class="tc">$14,000</td><td class="tc" style="color:#94A3B8">Tax-free forever</td><td class="tc" style="color:#EF4444">Pending</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card">
+    <h3>Combined Projection</h3>
+    <table>
+      <thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc" style="color:#3B82F6">Barbell</th><th class="tc" style="color:#10B981">401(k)</th><th class="tc" style="color:#F59E0B">HSA</th><th class="tc" style="color:#FCD34D">Combined</th></tr></thead>
+      <tbody id="ov-projtable"></tbody>
+    </table>
+    <p style="color:#64748B;font-size:11px;margin-top:8px">Forward estimates only. Not guarantees.</p>
+  </div>
+  <div class="card cyel"><p style="color:#FCD34D;font-size:12px;font-weight:700;margin-bottom:4px">Not financial advice</p><p style="color:#94A3B8;font-size:11px;line-height:1.6">Verify with a fee-only fiduciary advisor before major changes.</p></div>
+</div>
+
+<div class="tab" id="overview-location">
+  <h2>Asset Location Strategy</h2>
+  <p class="sub">One coordinated system across all accounts</p>
+  <div class="card">
+    <h3 style="margin-bottom:10px">Account Overview</h3>
+    <table>
+      <thead><tr><th class="tl">Account</th><th class="tl">Holdings</th><th class="tc">Annual $</th><th class="tc">Blended ER</th><th class="tc">Fwd Return</th><th class="tc">Withdrawal Tax</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#3B82F6;font-weight:700">Taxable</td><td style="color:#94A3B8;font-size:11px">SCHG/SCHD/AVUV/VXUS</td><td class="tc" id="loc-ann">$130,000</td><td class="tc" style="color:#10B981">0.099%</td><td class="tc" style="color:#10B981">~7.8%</td><td class="tc" style="color:#94A3B8">20% LTCG</td></tr>
+        <tr><td style="color:#10B981;font-weight:700">W-2 401(k)</td><td style="color:#94A3B8;font-size:11px">VSCPX/VIVIX/VTISF/VGINF/VEMRX</td><td class="tc">$34,000</td><td class="tc" style="color:#10B981">0.049%</td><td class="tc" style="color:#10B981">7.13%</td><td class="tc" style="color:#94A3B8">Ordinary income</td></tr>
+        <tr><td style="color:#8B5CF6;font-weight:700">Solo 401(k)</td><td style="color:#94A3B8;font-size:11px">SCHG/SCHD/AVUV/VTV</td><td class="tc">~$70,000</td><td class="tc" style="color:#10B981">0.099%</td><td class="tc" style="color:#10B981">7.85%</td><td class="tc" style="color:#94A3B8">Ordinary income</td></tr>
+        <tr><td style="color:#F59E0B;font-weight:700">HSA</td><td style="color:#94A3B8;font-size:11px">WFSPX</td><td class="tc">$8,300</td><td class="tc" style="color:#10B981">0.03%</td><td class="tc" style="color:#10B981">5.0%</td><td class="tc" style="color:#10B981">Tax-free*</td></tr>
+        <tr><td style="color:#EC4899;font-weight:700">Backdoor Roth x2</td><td style="color:#94A3B8;font-size:11px">TBD</td><td class="tc">$14,000</td><td class="tc">—</td><td class="tc" style="color:#94A3B8">~8%</td><td class="tc" style="color:#10B981">Tax-free</td></tr>
+        <tr style="border-top:2px solid #334155"><td style="color:#F8FAFC;font-weight:700">TOTAL</td><td style="color:#64748B;font-size:11px">All accounts</td><td class="tc" id="loc-total" style="color:#3B82F6;font-weight:700">$246K</td><td class="tc" style="color:#10B981;font-weight:700">~0.07%</td><td class="tc" style="color:#10B981;font-weight:700">~7.5%</td><td class="tc" style="color:#64748B">Mixed</td></tr>
+      </tbody>
+    </table>
+    <p style="color:#64748B;font-size:10px;margin-top:6px">*HSA tax-free for qualified medical. After 65 any withdrawal taxed like 401(k).</p>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:10px">Why Each Account Holds What It Does</h3>
+    <table>
+      <thead><tr><th class="tl">Account</th><th class="tl">What Goes Here</th><th class="tl">Why</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#3B82F6;font-weight:700">Taxable</td><td style="color:#94A3B8">SCHG, SCHD, AVUV, VXUS</td><td style="color:#94A3B8">Low turnover. VXUS must be here — foreign tax credit only in taxable.</td></tr>
+        <tr><td style="color:#10B981;font-weight:700">W-2 401(k)</td><td style="color:#94A3B8">VSCPX, VIVIX, VTISF, VGINF, VEMRX</td><td style="color:#94A3B8">Fills every gap barbell leaves. Value, small-cap, international compound tax-deferred.</td></tr>
+        <tr><td style="color:#8B5CF6;font-weight:700">Solo 401(k)</td><td style="color:#94A3B8">SCHG, SCHD, AVUV, VTV</td><td style="color:#94A3B8">Barbell with VTV replacing VXUS. No foreign tax drag. Self-directed — full ETF access.</td></tr>
+        <tr><td style="color:#F59E0B;font-weight:700">HSA</td><td style="color:#94A3B8">WFSPX</td><td style="color:#94A3B8">Triple tax-free — most powerful account per dollar. Never taxed in, during growth, or on withdrawal.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card cred">
+    <h3 style="color:#FCA5A5;margin-bottom:6px">Why No International in Any 401(k)</h3>
+    <p style="color:#94A3B8;font-size:12px;line-height:1.7">Foreign govts withhold ~0.6% of international ETF positions. In taxable you recover it via Foreign Tax Credit. Inside any 401(k) that credit is permanently lost. VXUS stays in taxable. Solo 401(k) uses VTV — same 7.5% fwd return, zero foreign drag.</p>
+  </div>
+  <div class="card" style="background:#0F172A;border:1px solid #334155">
+    <h3 style="margin-bottom:10px">Household Factor Coverage</h3>
+    <table>
+      <thead><tr><th class="tl">Factor</th><th class="tl">Where</th><th class="tc">Strength</th><th class="tl">Note</th></tr></thead>
+      <tbody>
+        <tr><td style="color:#F8FAFC">US Large Growth</td><td style="color:#94A3B8">Taxable SCHG + Solo SCHG</td><td class="tc" style="color:#10B981">Strong</td><td style="color:#64748B;font-size:11px">35% both accounts</td></tr>
+        <tr><td style="color:#F8FAFC">US Dividend</td><td style="color:#94A3B8">Taxable SCHD + Solo SCHD</td><td class="tc" style="color:#10B981">Strong</td><td style="color:#64748B;font-size:11px">30% both — sheltered in 401(k)</td></tr>
+        <tr><td style="color:#F8FAFC">US Small-Cap Value</td><td style="color:#94A3B8">AVUV + Solo AVUV + W-2 VSCPX</td><td class="tc" style="color:#10B981">Strong</td><td style="color:#64748B;font-size:11px">Highest fwd return factor</td></tr>
+        <tr><td style="color:#F8FAFC">US Large Value</td><td style="color:#94A3B8">Solo VTV + W-2 VIVIX</td><td class="tc" style="color:#10B981">Strong</td><td style="color:#64748B;font-size:11px">Value premium — cheap vs growth</td></tr>
+        <tr><td style="color:#F8FAFC">International</td><td style="color:#94A3B8">Taxable VXUS + W-2 VTISF</td><td class="tc" style="color:#10B981">Covered</td><td style="color:#64748B;font-size:11px">VXUS in taxable for credit</td></tr>
+        <tr><td style="color:#F8FAFC">Emerging Markets</td><td style="color:#94A3B8">W-2 VEMRX</td><td class="tc" style="color:#F59E0B">Light</td><td style="color:#64748B;font-size:11px">10% growth kicker</td></tr>
+        <tr><td style="color:#F8FAFC">S&P 500 Core</td><td style="color:#94A3B8">W-2 VGINF + HSA WFSPX</td><td class="tc" style="color:#10B981">Covered</td><td style="color:#64748B;font-size:11px">Stability + triple tax-free</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card" style="background:#0F172A;border:1px solid #334155">
+    <h3 style="margin-bottom:6px">Complete Fund Reference</h3>
+    <p style="color:#64748B;font-size:11px;margin-bottom:10px">All funds across all accounts. Live prices load below via TradingView.</p>
+    <table>
+      <thead><tr><th class="tl">Account</th><th class="tl">Ticker</th><th class="tl">Fund Name</th><th class="tc">Alloc</th><th class="tc">ER</th><th class="tc">10yr</th><th class="tc">Fwd</th><th class="tl">Class</th></tr></thead>
+      <tbody>
+        <tr><td colspan="8" style="color:#3B82F6;font-weight:700;padding:5px;background:#0B1629">Taxable Barbell</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Taxable</td><td style="color:#EC4899;font-weight:700">SCHG</td><td style="color:#94A3B8;font-size:11px">Schwab US Large-Cap Growth ETF</td><td class="tc">35%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc">17.0%</td><td class="tc" style="color:#10B981">5.5%</td><td style="color:#64748B;font-size:10px">US Lg Growth</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Taxable</td><td style="color:#14B8A6;font-weight:700">SCHD</td><td style="color:#94A3B8;font-size:11px">Schwab US Dividend Equity ETF</td><td class="tc">30%</td><td class="tc" style="color:#10B981">0.06%</td><td class="tc">~11%</td><td class="tc" style="color:#10B981">9.5%</td><td style="color:#64748B;font-size:10px">US Dividend</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Taxable</td><td style="color:#F59E0B;font-weight:700">AVUV</td><td style="color:#94A3B8;font-size:11px">Avantis US Small Cap Value ETF</td><td class="tc">20%</td><td class="tc" style="color:#10B981">0.25%</td><td class="tc">~10%</td><td class="tc" style="color:#10B981">8.0%</td><td style="color:#64748B;font-size:10px">US SC Value</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Taxable</td><td style="color:#8B5CF6;font-weight:700">VXUS</td><td style="color:#94A3B8;font-size:11px">Vanguard Total International Stock ETF</td><td class="tc">15%</td><td class="tc" style="color:#10B981">0.07%</td><td class="tc">10.5%</td><td class="tc" style="color:#10B981">7.0%</td><td style="color:#64748B;font-size:10px">International</td></tr>
+        <tr><td colspan="8" style="color:#10B981;font-weight:700;padding:5px;background:#0B1629">W-2 401(k)</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">W-2 401k</td><td style="color:#F59E0B;font-weight:700">VSCPX</td><td style="color:#94A3B8;font-size:11px">Vanguard Small-Cap Index InstlPlus</td><td class="tc">25%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc">10.6%</td><td class="tc" style="color:#10B981">8.0%</td><td style="color:#64748B;font-size:10px">US SC Blend</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">W-2 401k</td><td style="color:#14B8A6;font-weight:700">VIVIX</td><td style="color:#94A3B8;font-size:11px">Vanguard Value Index Institutional</td><td class="tc">25%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc">13.3%</td><td class="tc" style="color:#10B981">7.5%</td><td style="color:#64748B;font-size:10px">US Lg Value</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">W-2 401k</td><td style="color:#8B5CF6;font-weight:700">VTISF</td><td style="color:#94A3B8;font-size:11px">Vanguard Total International Stock Idx</td><td class="tc">25%</td><td class="tc" style="color:#10B981">0.07%</td><td class="tc">5.5%</td><td class="tc" style="color:#10B981">7.0%</td><td style="color:#64748B;font-size:10px">International</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">W-2 401k</td><td style="color:#3B82F6;font-weight:700">VGINF</td><td style="color:#94A3B8;font-size:11px">Vanguard Institutional 500 Index Trust</td><td class="tc">15%</td><td class="tc" style="color:#10B981">0.01%</td><td class="tc">13.3%</td><td class="tc" style="color:#94A3B8">5.0%</td><td style="color:#64748B;font-size:10px">S&amp;P 500</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">W-2 401k</td><td style="color:#10B981;font-weight:700">VEMRX</td><td style="color:#94A3B8;font-size:11px">Vanguard Emerging Markets Stock Idx</td><td class="tc">10%</td><td class="tc" style="color:#10B981">0.10%</td><td class="tc">4.5%</td><td class="tc" style="color:#10B981">7.5%</td><td style="color:#64748B;font-size:10px">Emerging Mkts</td></tr>
+        <tr><td colspan="8" style="color:#8B5CF6;font-weight:700;padding:5px;background:#0B1629">Solo 401(k)</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Solo</td><td style="color:#EC4899;font-weight:700">SCHG</td><td style="color:#94A3B8;font-size:11px">Schwab US Large-Cap Growth ETF</td><td class="tc">35%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc">17.0%</td><td class="tc" style="color:#10B981">5.5%</td><td style="color:#64748B;font-size:10px">US Lg Growth</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Solo</td><td style="color:#14B8A6;font-weight:700">SCHD</td><td style="color:#94A3B8;font-size:11px">Schwab US Dividend Equity ETF</td><td class="tc">30%</td><td class="tc" style="color:#10B981">0.06%</td><td class="tc">~11%</td><td class="tc" style="color:#10B981">9.5%</td><td style="color:#64748B;font-size:10px">US Dividend</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Solo</td><td style="color:#F59E0B;font-weight:700">AVUV</td><td style="color:#94A3B8;font-size:11px">Avantis US Small Cap Value ETF</td><td class="tc">20%</td><td class="tc" style="color:#10B981">0.25%</td><td class="tc">~10%</td><td class="tc" style="color:#10B981">8.0%</td><td style="color:#64748B;font-size:10px">US SC Value</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Solo</td><td style="color:#6366F1;font-weight:700">VTV</td><td style="color:#94A3B8;font-size:11px">Vanguard Value ETF</td><td class="tc">15%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc">13.3%</td><td class="tc" style="color:#10B981">7.5%</td><td style="color:#64748B;font-size:10px">US Lg Value</td></tr>
+        <tr><td colspan="8" style="color:#F59E0B;font-weight:700;padding:5px;background:#0B1629">HSA</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">HSA</td><td style="color:#F59E0B;font-weight:700">WFSPX</td><td style="color:#94A3B8;font-size:11px">iShares S&P 500 Index Fund Class K</td><td class="tc">100%</td><td class="tc" style="color:#10B981">0.03%</td><td class="tc">14.7%</td><td class="tc" style="color:#94A3B8">5.0%</td><td style="color:#64748B;font-size:10px">S&amp;P 500</td></tr>
+        <tr><td colspan="8" style="color:#FCD34D;font-weight:700;padding:5px;background:#0B1629">Tax-Loss Swap Partners</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Swap SCHG</td><td style="color:#EC4899;font-weight:700">VUG</td><td style="color:#94A3B8;font-size:11px">Vanguard Growth ETF</td><td class="tc">—</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc">~17%</td><td class="tc">—</td><td style="color:#64748B;font-size:10px">US Lg Growth</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Swap SCHD</td><td style="color:#14B8A6;font-weight:700">VYM</td><td style="color:#94A3B8;font-size:11px">Vanguard High Dividend Yield ETF</td><td class="tc">—</td><td class="tc" style="color:#10B981">0.06%</td><td class="tc">~10%</td><td class="tc">—</td><td style="color:#64748B;font-size:10px">US Dividend</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Swap AVUV</td><td style="color:#F59E0B;font-weight:700">DFSV</td><td style="color:#94A3B8;font-size:11px">Dimensional US Small Cap Value ETF</td><td class="tc">—</td><td class="tc" style="color:#10B981">0.31%</td><td class="tc">~10%</td><td class="tc">—</td><td style="color:#64748B;font-size:10px">US SC Value</td></tr>
+        <tr><td style="color:#64748B;font-size:10px">Swap VXUS</td><td style="color:#8B5CF6;font-weight:700">IXUS</td><td style="color:#94A3B8;font-size:11px">iShares Core MSCI Total Intl Stock ETF</td><td class="tc">—</td><td class="tc" style="color:#10B981">0.07%</td><td class="tc">~10%</td><td class="tc">—</td><td style="color:#64748B;font-size:10px">International</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TradingView market overview table -->
+  <div class="card" style="background:#0F172A;border:1px solid #334155">
+    <h3 style="margin-bottom:4px">Live Prices</h3>
+    <p style="color:#64748B;font-size:11px;margin-bottom:8px">Real-time via TradingView — loads on first visit to this tab</p>
+    <div id="tv-widgets"><p style="color:#64748B;font-size:11px;padding:10px">Loading market data...</p></div>
+  </div>
+
+</div>
+
+<div class="tab" id="overview-backdoor">
+  <h2>Backdoor Roth</h2>
+  <p class="sub">$14,000/year • Tax-free forever • Fix blockers first</p>
+  <div class="sg g3">
+    <div class="st"><div class="sl">Your Annual</div><div class="sv" style="color:#8B5CF6">$7,000</div></div>
+    <div class="st"><div class="sl">Spouse Annual</div><div class="sv" style="color:#8B5CF6">$7,000</div></div>
+    <div class="st"><div class="sl">20yr Est</div><div class="sv" style="color:#10B981">~$700K</div></div>
+  </div>
+  <div class="card cred"><h3 style="color:#FCA5A5">Blockers</h3>
+    <table style="margin-top:8px"><thead><tr><th class="tl">Person</th><th class="tl">Problem</th><th class="tl">Fix</th><th class="tc">Status</th></tr></thead>
+    <tbody><tr><td style="font-weight:700">You</td><td style="color:#94A3B8">Pre-tax IRA</td><td style="color:#94A3B8">Roll into W-2 401(k)</td><td class="tc" style="color:#EF4444">Pending</td></tr>
+    <tr><td style="font-weight:700">Spouse</td><td style="color:#94A3B8">Fidelity won't accept IRA rollover</td><td style="color:#94A3B8">Convert to Roth — ~$4,700 tax once</td><td class="tc" style="color:#EF4444">Pending</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <div class="step"><div class="snum" style="background:#3B82F6">1</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Contribute $7,000 to new traditional IRA</p><p class="fd">Non-deductible. Before April 15 each year.</p></div></div>
+    <div class="step"><div class="snum" style="background:#3B82F6">2</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Immediately convert to Roth IRA</p><p class="fd">Same day. Zero tax. Tax-free forever.</p></div></div>
+    <div class="step"><div class="snum" style="background:#3B82F6">3</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Spouse repeats — $14,000 total</p><p class="fd">January reminder every year.</p></div></div>
+    <div class="step"><div class="snum" style="background:#64748B">4</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Check mega backdoor Roth</p><p class="fd">Ask W-2 plan admin: "Do you allow after-tax contributions and in-plan Roth conversions?"</p></div></div>
+  </div>
+</div>
+
+<div class="tab" id="overview-tlh">
+  <h2>Tax-Loss Harvesting</h2>
+  <p class="sub">Taxable only • 30-day wash sale window • Pre-load swaps now</p>
+  <div class="sg g3">
+    <div class="st"><div class="sl">Harvest At</div><div class="sv" style="color:#EF4444">15%+</div></div>
+    <div class="st"><div class="sl">Wash Sale</div><div class="sv" style="color:#F59E0B">30 days</div></div>
+    <div class="st"><div class="sl">Best Window</div><div class="sv" style="color:#10B981">Nov–Dec</div></div>
+  </div>
+  <div class="card"><h3>Swap Partners</h3>
+    <table><thead><tr><th class="tl">Hold</th><th class="tl">Swap To</th><th class="tl">Why Safe</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#EC4899;font-weight:700">SCHG</td><td style="font-weight:600">VUG</td><td style="color:#94A3B8">Different index (CRSP vs Dow Jones)</td></tr>
+      <tr><td style="color:#14B8A6;font-weight:700">SCHD</td><td style="font-weight:600">VYM</td><td style="color:#94A3B8">Different index, different methodology</td></tr>
+      <tr><td style="color:#F59E0B;font-weight:700">AVUV</td><td style="font-weight:600">DFSV</td><td style="color:#94A3B8">Different provider (DFA vs Avantis)</td></tr>
+      <tr><td style="color:#8B5CF6;font-weight:700">VXUS</td><td style="font-weight:600">IXUS</td><td style="color:#94A3B8">Different provider (iShares vs Vanguard)</td></tr>
+    </tbody></table>
+  </div>
+  <div class="card cred"><h3 style="color:#FCA5A5">Rules</h3>
+    <p style="color:#94A3B8;font-size:12px;line-height:1.9">No original ETF within 30 days — includes buying it in 401(k)<br>Document every swap — date, sold, bought, loss amount<br>Execute Monday morning — best liquidity<br>Harvest at 15%+ only</p>
+  </div>
+</div>
+
+<div class="tab" id="overview-action">
+  <h2>Action Steps</h2>
+  <div class="step"><div class="snum" style="background:#EF4444">1</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Call W-2 401(k) admin — IRA rollover <span class="badge" style="background:#EF4444;color:#fff">URGENT</span></p><p class="fd">Ask: "Do you accept incoming traditional IRA rollovers?"</p></div></div>
+  <div class="step"><div class="snum" style="background:#EF4444">2</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Spouse — convert IRA to Roth <span class="badge" style="background:#EF4444;color:#fff">BEFORE APR 15</span></p><p class="fd">One-time ~$4,700 tax. Clears pro-rata permanently.</p></div></div>
+  <div class="step"><div class="snum" style="background:#EF4444">3</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Check mega backdoor Roth <span class="badge" style="background:#EF4444;color:#fff">URGENT</span></p><p class="fd">Ask plan admin: "Do you allow after-tax contributions and in-plan Roth conversions?"</p></div></div>
+  <div class="step"><div class="snum" style="background:#3B82F6">4</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Set up barbell auto-invest</p><p class="fd">$1,250 Mon + $1,250 Fri. SCHG/SCHD/AVUV/VXUS. DRIP on. Specific lot ID.</p></div></div>
+  <div class="step"><div class="snum" style="background:#3B82F6">5</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Solo 401(k) — execute barbell at Fidelity</p><p class="fd">SCHG 35% / SCHD 30% / AVUV 20% / VTV 15% on $70K.</p></div></div>
+  <div class="step"><div class="snum" style="background:#3B82F6">6</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Backdoor Roth — $7,000 each</p><p class="fd">After IRA rollover clears. Contribute then convert same day.</p></div></div>
+  <div class="step"><div class="snum" style="background:#64748B">7</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Annual reminders</p><p class="fd">January: rebalance + backdoor Roth. November: tax-loss harvest. April 15: Roth deadline.</p></div></div>
+</div>
+</div></div>
+
+<!-- BARBELL -->
+<div class="sec" id="s-barbell">
+<div class="snav">
+  <button class="snb on" onclick="showTab('barbell','alloc',this)">Allocation</button>
+  <button class="snb" onclick="showTab('barbell','auto',this)">Auto-Invest</button>
+  <button class="snb" onclick="showTab('barbell','proj',this)">Projections</button>
+  <button class="snb" onclick="showTab('barbell','div',this)">Dividends</button>
+  <button class="snb" onclick="showTab('barbell','crash',this)">Crash Protocol</button>
+  <button class="snb" onclick="showTab('barbell','drip',this)">DRIP</button>
+  <button class="snb" onclick="showTab('barbell','phases',this)">Phase 2 & 3</button>
+  <button class="snb" onclick="showTab('barbell','timeline',this)">Timeline</button>
+</div>
+<div class="wrap">
+<div class="tab on" id="barbell-alloc">
+  <h1>Taxable Barbell</h1>
+  <p class="sub" id="bb-sub">$2,500/week • $130,000/year</p>
+  <div class="sg g4" id="bb-stats"></div>
+  <div class="abar"><div class="bs" style="width:35%;background:#EC4899">SCHG 35%</div><div class="bs" style="width:30%;background:#14B8A6">SCHD 30%</div><div class="bs" style="width:20%;background:#F59E0B">AVUV 20%</div><div class="bs" style="width:15%;background:#8B5CF6">VXUS 15%</div></div>
+  <div class="fund" style="border-left:3px solid #EC4899"><div class="fh"><div><span class="ft">SCHG</span><span style="color:#64748B;font-size:11px;margin-left:8px">35% • ER 0.04%</span></div><div style="text-align:right"><span style="color:#EC4899;font-weight:700" id="bb-schg-wk">$875/wk</span><span style="color:#64748B;font-size:11px;margin-left:6px" id="bb-schg-yr">$45,500/yr</span></div></div><div class="fd">Schwab US Large-Cap Growth • 10yr: 17.0% • Fwd: 5.5%</div><div class="fgrn">Growth engine — US large-cap, heavy tech/AI</div><div class="fyel">Tax-loss swap: VUG</div></div>
+  <div class="fund" style="border-left:3px solid #14B8A6"><div class="fh"><div><span class="ft">SCHD</span><span style="color:#64748B;font-size:11px;margin-left:8px">30% • ER 0.06%</span></div><div style="text-align:right"><span style="color:#14B8A6;font-weight:700" id="bb-schd-wk">$750/wk</span><span style="color:#64748B;font-size:11px;margin-left:6px" id="bb-schd-yr">$39,000/yr</span></div></div><div class="fd">Schwab US Dividend • 10yr: ~11% • Fwd: 9.5% • Yield: ~3.5%</div><div class="fgrn">Income engine — 3.5% yield, ~6% dividend growth/yr</div><div class="fyel">Tax-loss swap: VYM</div></div>
+  <div class="fund" style="border-left:3px solid #F59E0B"><div class="fh"><div><span class="ft">AVUV</span><span style="color:#64748B;font-size:11px;margin-left:8px">20% • ER 0.25%</span></div><div style="text-align:right"><span style="color:#F59E0B;font-weight:700" id="bb-avuv-wk">$500/wk</span><span style="color:#64748B;font-size:11px;margin-left:6px" id="bb-avuv-yr">$26,000/yr</span></div></div><div class="fd">Avantis US Small-Cap Value • 10yr: ~10% • Fwd: 8.0%</div><div class="fgrn">Factor premium — zero overlap with SCHG</div><div class="fyel">Tax-loss swap: DFSV</div></div>
+  <div class="fund" style="border-left:3px solid #8B5CF6"><div class="fh"><div><span class="ft">VXUS</span><span style="color:#64748B;font-size:11px;margin-left:8px">15% • ER 0.07%</span></div><div style="text-align:right"><span style="color:#8B5CF6;font-weight:700" id="bb-vxus-wk">$375/wk</span><span style="color:#64748B;font-size:11px;margin-left:6px" id="bb-vxus-yr">$19,500/yr</span></div></div><div class="fd">Vanguard Total International • 10yr: 10.48% • Fwd: 7.0%</div><div class="fgrn">Only non-US exposure in taxable. Foreign tax credit here only.</div><div class="fyel">Tax-loss swap: IXUS</div></div>
+</div>
+<div class="tab" id="barbell-auto">
+  <h2>Auto-Invest Setup</h2>
+  <p class="sub">$1,250 Monday + $1,250 Friday</p>
+  <div class="card"><table><thead><tr><th class="tl">ETF</th><th class="tc">Monday</th><th class="tc">Friday</th><th class="tc">Weekly</th><th class="tc">Annual</th></tr></thead><tbody id="bb-autotable"></tbody></table></div>
+  <div class="card cblu"><h3 style="color:#93C5FD">Checklist</h3><p style="color:#94A3B8;font-size:12px;line-height:2">☐ Enable fractional shares<br>☐ $1,250 auto-transfer Monday<br>☐ $1,250 auto-transfer Friday<br>☐ Recurring fractional buys all 4 ETFs both days<br>☐ DRIP on all 4<br>☐ Tax lot: Specific Identification<br>☐ Swap watchlist: VUG / VYM / DFSV / IXUS</p></div>
+</div>
+<div class="tab" id="barbell-proj">
+  <h2>Barbell Projections</h2>
+  <p class="sub" id="bb-proj-sub">Starting $0</p>
+  <div class="card"><table><thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc">Total In</th><th class="tc">7% Bear</th><th class="tc" style="color:#10B981">9% Base</th><th class="tc">11% Bull</th></tr></thead><tbody id="bb-projtable"></tbody></table></div>
+</div>
+<div class="tab" id="barbell-div">
+  <h2>Dividend Income</h2>
+  <p class="sub">Blended yield: SCHG 0.5%x35 + SCHD 3.5%x30 + AVUV 1.8%x20 + VXUS 3.0%x15 = 2.035% base, growing as SCHD dividends compound</p>
+  <div class="card"><table><thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc">Portfolio</th><th class="tc">Yield</th><th class="tc">Annual Divs</th><th class="tc">Monthly</th></tr></thead><tbody id="bb-divtable"></tbody></table></div>
+  <div class="card cblu"><p style="color:#94A3B8;font-size:12px;line-height:1.8"><strong style="color:#F8FAFC">Accumulation:</strong> DRIP on all 4.<br><strong style="color:#F8FAFC">Income phase (~75% of horizon):</strong> Turn SCHD DRIP off — collect as cash.<br><strong style="color:#FCD34D">Note:</strong> Dividends taxed annually even with DRIP on. SCHD mostly qualified at 20%.</p></div>
+</div>
+<div class="tab" id="barbell-crash">
+  <h2>Crash Protocol</h2>
+  <div class="crash-row">
+    <div class="crash-box"><div style="color:#EF4444;font-size:22px;font-weight:700">-10%</div><div style="color:#94A3B8;font-size:11px;margin-top:3px">Correction</div><div style="color:#F8FAFC;font-size:12px;margin-top:5px;font-weight:600">Keep buying.</div></div>
+    <div class="crash-box"><div style="color:#F59E0B;font-size:22px;font-weight:700">-20%</div><div style="color:#94A3B8;font-size:11px;margin-top:3px">Bear market</div><div style="color:#F8FAFC;font-size:12px;margin-top:5px;font-weight:600">Add from business cash.</div></div>
+    <div class="crash-box"><div style="color:#10B981;font-size:22px;font-weight:700">-30%</div><div style="color:#94A3B8;font-size:11px;margin-top:3px">Severe crash</div><div style="color:#F8FAFC;font-size:12px;margin-top:5px;font-weight:600">Harvest losses. Buy aggressively.</div></div>
+  </div>
+  <div class="card cgrn"><h3 style="color:#86EFAC">When Down 15%+</h3>
+    <div class="step"><div class="snum" style="background:#10B981">1</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Harvest losses immediately</p><p class="fd">Sell, buy swap partner same day. Stay invested.</p></div></div>
+    <div class="step"><div class="snum" style="background:#10B981">2</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Increase weekly buy</p><p class="fd">Every dollar at -30% compounds at a discount.</p></div></div>
+    <div class="step"><div class="snum" style="background:#10B981">3</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Do not sell</p><p class="fd">Business income covers expenses. Selling locks losses permanently.</p></div></div>
+    <div class="step"><div class="snum" style="background:#10B981">4</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">After 31 days — swap back if desired</p><p class="fd">Wash sale window cleared.</p></div></div>
+  </div>
+</div>
+<div class="tab" id="barbell-drip">
+  <h2>DRIP Plan</h2>
+  <div class="card"><table><thead><tr><th class="tl">ETF</th><th class="tc">Accumulation</th><th class="tc">Income Phase</th><th class="tl">Why</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#EC4899;font-weight:700">SCHG</td><td class="tc" style="color:#10B981">ON</td><td class="tc" style="color:#10B981">ON</td><td style="color:#94A3B8">Low yield ~0.5%</td></tr>
+      <tr><td style="color:#14B8A6;font-weight:700">SCHD</td><td class="tc" style="color:#10B981">ON</td><td class="tc" style="color:#EF4444">OFF</td><td style="color:#94A3B8">3.5% yield — collect as income</td></tr>
+      <tr><td style="color:#F59E0B;font-weight:700">AVUV</td><td class="tc" style="color:#10B981">ON</td><td class="tc" style="color:#10B981">ON</td><td style="color:#94A3B8">Low yield ~1.8%</td></tr>
+      <tr><td style="color:#8B5CF6;font-weight:700">VXUS</td><td class="tc" style="color:#10B981">ON</td><td class="tc" style="color:#10B981">ON</td><td style="color:#94A3B8">Moderate yield ~3%</td></tr>
+    </tbody>
+  </table></div>
+</div>
+<div class="tab" id="barbell-phases">
+  <h2>Phase 2 & 3</h2>
+  <p class="sub">Redirect new contributions only — never sell existing positions</p>
+  <div class="phase-card" style="background:#1E3A5F;border-color:#2563EB"><h3 style="color:#93C5FD;margin-bottom:8px">Phase 1 — Accumulation</h3><div class="abar"><div class="bs" style="width:35%;background:#EC4899">SCHG 35%</div><div class="bs" style="width:30%;background:#14B8A6">SCHD 30%</div><div class="bs" style="width:20%;background:#F59E0B">AVUV 20%</div><div class="bs" style="width:15%;background:#8B5CF6">VXUS 15%</div></div><p style="color:#94A3B8;font-size:11px">Current. DRIP on all. Auto-invest running.</p></div>
+  <div class="phase-card" style="background:#1A3A2A;border-color:#16A34A"><h3 style="color:#86EFAC;margin-bottom:8px">Phase 2 — Transition</h3><div class="abar"><div class="bs" style="width:30%;background:#EC4899">SCHG 30%</div><div class="bs" style="width:30%;background:#14B8A6">SCHD 30%</div><div class="bs" style="width:15%;background:#F59E0B">AVUV 15%</div><div class="bs" style="width:15%;background:#8B5CF6">VXUS 15%</div><div class="bs" style="width:10%;background:#6366F1">BOND 10%</div></div><p style="color:#94A3B8;font-size:11px">Redirect new contributions. Add bond ETF (BND). Sequencing risk real at $3M+.</p></div>
+  <div class="phase-card" style="background:#2A1A3A;border-color:#7C3AED"><h3 style="color:#C4B5FD;margin-bottom:8px">Phase 3 — Income</h3><div class="abar"><div class="bs" style="width:25%;background:#EC4899">SCHG 25%</div><div class="bs" style="width:30%;background:#14B8A6">SCHD 30%</div><div class="bs" style="width:20%;background:#6366F1">BOND 20%</div><div class="bs" style="width:15%;background:#8B5CF6">VXUS 15%</div><div class="bs" style="width:10%;background:#F59E0B">AVUV 10%</div></div><p style="color:#94A3B8;font-size:11px">Turn SCHD DRIP off — collect dividends as income. Never sell shares.</p></div>
+</div>
+<div class="tab" id="barbell-timeline">
+  <h2>Timeline</h2>
+  <div class="tline" id="bb-timeline"></div>
+</div>
+</div></div>
+
+<!-- 401K -->
+<div class="sec" id="s-k401">
+<div class="snav">
+  <button class="snb on" onclick="showTab('k401','w2',this)">W-2 Allocation</button>
+  <button class="snb" onclick="showTab('k401','solo',this)">Solo Allocation</button>
+  <button class="snb" onclick="showTab('k401','proj',this)">Projections</button>
+  <button class="snb" onclick="showTab('k401','rebal',this)">Rebalance Cards</button>
+</div>
+<div class="wrap">
+<div class="tab on" id="k401-w2">
+  <h1>W-2 401(k) — Pure 5-Fund</h1>
+  <p class="sub" id="w2-sub">Balance • $23,500 you + $10,500 match = $34,000/yr</p>
+  <div class="sg g4" id="w2-stats"></div>
+  <div class="abar"><div class="bs" style="width:25%;background:#F59E0B">VSCPX 25%</div><div class="bs" style="width:25%;background:#14B8A6">VIVIX 25%</div><div class="bs" style="width:25%;background:#8B5CF6">VTISF 25%</div><div class="bs" style="width:15%;background:#3B82F6">VGINF 15%</div><div class="bs" style="width:10%;background:#10B981">VEMRX 10%</div></div>
+  <div class="fund" style="border-left:3px solid #F59E0B"><div class="fh"><div><span class="ft">VSCPX</span><span style="color:#64748B;font-size:11px;margin-left:8px">25% • ER 0.04%</span></div><div style="text-align:right"><span style="color:#F59E0B;font-weight:700" id="w2-vscpx">$125,000</span></div></div><div class="fd">Vanguard Small-Cap Index • 10yr: 10.59% • Fwd: 8.0%</div><div class="fgrn">Highest forward return. Zero overlap with taxable.</div></div>
+  <div class="fund" style="border-left:3px solid #14B8A6"><div class="fh"><div><span class="ft">VIVIX</span><span style="color:#64748B;font-size:11px;margin-left:8px">25% • ER 0.04%</span></div><div style="text-align:right"><span style="color:#14B8A6;font-weight:700" id="w2-vivix">$125,000</span></div></div><div class="fd">Vanguard Value Index • 10yr: 13.25% • Fwd: 7.5%</div><div class="fgrn">Value premium. Complements SCHG growth.</div></div>
+  <div class="fund" style="border-left:3px solid #8B5CF6"><div class="fh"><div><span class="ft">VTISF</span><span style="color:#64748B;font-size:11px;margin-left:8px">25% • ER 0.07%</span></div><div style="text-align:right"><span style="color:#8B5CF6;font-weight:700" id="w2-vtisf">$125,000</span></div></div><div class="fd">Vanguard Total International • 10yr: 5.50% • Fwd: 7.0%</div><div class="fgrn">International tax-deferred. Fund menu limitation — acceptable.</div></div>
+  <div class="fund" style="border-left:3px solid #3B82F6"><div class="fh"><div><span class="ft">VGINF</span><span style="color:#64748B;font-size:11px;margin-left:8px">15% • ER 0.01%</span></div><div style="text-align:right"><span style="color:#3B82F6;font-weight:700" id="w2-vginf">$75,000</span></div></div><div class="fd">Vanguard 500 Index • 10yr: 13.25% • Fwd: 5.0%</div><div class="fgrn">Stability anchor. Fixed monthly — reduce volatility here.</div></div>
+  <div class="fund" style="border-left:3px solid #10B981"><div class="fh"><div><span class="ft">VEMRX</span><span style="color:#64748B;font-size:11px;margin-left:8px">10% • ER 0.10%</span></div><div style="text-align:right"><span style="color:#10B981;font-weight:700" id="w2-vemrx">$50,000</span></div></div><div class="fd">Vanguard Emerging Markets • 10yr: 4.50% • Fwd: 7.5%</div><div class="fgrn">Growth kicker. Controlled at 10%.</div></div>
+</div>
+<div class="tab" id="k401-solo">
+  <h1>Solo 401(k) — Barbell</h1>
+  <p class="sub" id="solo-sub">Balance • Self-directed Fidelity • SCHG/SCHD/AVUV/VTV</p>
+  <div class="sg g4" id="solo-stats"></div>
+  <div class="abar"><div class="bs" style="width:35%;background:#EC4899">SCHG 35%</div><div class="bs" style="width:30%;background:#14B8A6">SCHD 30%</div><div class="bs" style="width:20%;background:#F59E0B">AVUV 20%</div><div class="bs" style="width:15%;background:#6366F1">VTV 15%</div></div>
+  <div class="fund" style="border-left:3px solid #EC4899"><div class="fh"><div><span class="ft">SCHG</span><span style="color:#64748B;font-size:11px;margin-left:8px">35% • ER 0.04%</span></div><div style="text-align:right"><span style="color:#EC4899;font-weight:700" id="solo-schg">$24,500</span></div></div><div class="fd">Schwab US Large-Cap Growth • Fwd: 5.5%</div><div class="fgrn">Growth engine — compounding tax-deferred</div></div>
+  <div class="fund" style="border-left:3px solid #14B8A6"><div class="fh"><div><span class="ft">SCHD</span><span style="color:#64748B;font-size:11px;margin-left:8px">30% • ER 0.06%</span></div><div style="text-align:right"><span style="color:#14B8A6;font-weight:700" id="solo-schd">$21,000</span></div></div><div class="fd">Schwab US Dividend • Yield: 3.5% • Fwd: 9.5%</div><div class="fgrn">3.5% dividends compound tax-free — no annual drag</div></div>
+  <div class="fund" style="border-left:3px solid #F59E0B"><div class="fh"><div><span class="ft">AVUV</span><span style="color:#64748B;font-size:11px;margin-left:8px">20% • ER 0.25%</span></div><div style="text-align:right"><span style="color:#F59E0B;font-weight:700" id="solo-avuv">$14,000</span></div></div><div class="fd">Avantis US Small-Cap Value • Fwd: 8.0%</div><div class="fgrn">Factor premium — high turnover sheltered here</div></div>
+  <div class="fund" style="border-left:3px solid #6366F1"><div class="fh"><div><span class="ft">VTV</span><span style="color:#64748B;font-size:11px;margin-left:8px">15% • ER 0.04%</span></div><div style="text-align:right"><span style="color:#6366F1;font-weight:700" id="solo-vtv">$10,500</span></div></div><div class="fd">Vanguard Large Value • Fwd: 7.5%</div><div class="fgrn">Replaces VXUS — no foreign tax credit lost in 401(k)</div></div>
+</div>
+<div class="tab" id="k401-proj">
+  <h2>401(k) Projections</h2>
+  <p class="sub" id="k401-proj-sub">W-2 + Solo • Tax-deferred</p>
+  <div class="icard">
+    <h3 style="margin-bottom:10px">Solo 401(k) Annual Contribution Scenarios</h3>
+    <p style="color:#64748B;font-size:11px;margin-bottom:12px">Business income varies — set three scenarios to see your range.</p>
+    <div class="ig">
+      <div class="iw"><span class="il" style="color:#EF4444">Conservative $</span><input class="inp" id="solo-cons" type="number" value="25000" oninput="recalc()" style="border-color:#EF4444"><span style="color:#64748B;font-size:10px">Low business year</span></div>
+      <div class="iw"><span class="il" style="color:#F59E0B">Base $</span><input class="inp" id="solo-base" type="number" value="50000" oninput="recalc()" style="border-color:#F59E0B"><span style="color:#64748B;font-size:10px">Average expected</span></div>
+      <div class="iw"><span class="il" style="color:#10B981">Optimistic $</span><input class="inp" id="solo-opt" type="number" value="70000" oninput="recalc()" style="border-color:#10B981"><span style="color:#64748B;font-size:10px">Strong year — near IRS max</span></div>
+    </div>
+  </div>
+  <div class="card"><h3 style="margin-bottom:8px">W-2 401(k) — 7.13% fwd</h3><table><thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc" style="color:#10B981">W-2 Balance</th></tr></thead><tbody id="k401-w2table"></tbody></table></div>
+  <div class="card"><h3 style="margin-bottom:8px">Solo 401(k) — 7.85% fwd — Three Scenarios</h3><table><thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc" style="color:#EF4444">Conservative</th><th class="tc" style="color:#F59E0B">Base</th><th class="tc" style="color:#10B981">Optimistic</th></tr></thead><tbody id="k401-solotable"></tbody></table></div>
+  <div class="card" style="background:#0F172A;border:1px solid #334155"><h3 style="margin-bottom:8px">Combined Total (W-2 + Solo)</h3><table><thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc" style="color:#EF4444">Conservative</th><th class="tc" style="color:#F59E0B">Base</th><th class="tc" style="color:#10B981">Optimistic</th></tr></thead><tbody id="k401-combinedtable"></tbody></table></div>
+  <div class="card cyel"><p style="color:#FCD34D;font-size:11px;font-weight:600;margin-bottom:3px">Forward estimates</p><p style="color:#94A3B8;font-size:11px">Use Base as your planning number. Conservative = floor if business has a bad year.</p></div>
+</div>
+<div class="tab" id="k401-rebal">
+  <h2>Annual Rebalance</h2>
+  <p class="sub">January • Tax-free inside 401(k) • Both accounts</p>
+  <div class="card cgrn"><h3 style="color:#86EFAC">100% Tax-Free Inside 401(k)</h3><p style="color:#94A3B8;font-size:12px;margin-top:6px">Sell and rebuy freely every January. No capital gains tax.</p></div>
+  <div class="card"><h3>W-2 Target</h3>
+    <table><thead><tr><th class="tl">Fund</th><th class="tc">%</th><th class="tc">Monthly</th><th class="tc">ER</th><th class="tc">Fwd</th></tr></thead>
+    <tbody><tr><td style="color:#F59E0B;font-weight:700">VSCPX</td><td class="tc">25%</td><td class="tc" style="color:#94A3B8">$708</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc" style="color:#10B981">8.0%</td></tr>
+    <tr><td style="color:#14B8A6;font-weight:700">VIVIX</td><td class="tc">25%</td><td class="tc" style="color:#94A3B8">$708</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc" style="color:#10B981">7.5%</td></tr>
+    <tr><td style="color:#8B5CF6;font-weight:700">VTISF</td><td class="tc">25%</td><td class="tc" style="color:#94A3B8">$708</td><td class="tc" style="color:#10B981">0.07%</td><td class="tc" style="color:#10B981">7.0%</td></tr>
+    <tr><td style="color:#3B82F6;font-weight:700">VGINF</td><td class="tc">15%</td><td class="tc" style="color:#94A3B8">$425</td><td class="tc" style="color:#10B981">0.01%</td><td class="tc" style="color:#94A3B8">5.0%</td></tr>
+    <tr><td style="color:#10B981;font-weight:700">VEMRX</td><td class="tc">10%</td><td class="tc" style="color:#94A3B8">$283</td><td class="tc" style="color:#10B981">0.10%</td><td class="tc" style="color:#10B981">7.5%</td></tr>
+    <tr style="border-top:1px solid #334155"><td style="font-weight:700">TOTAL</td><td class="tc" style="font-weight:700">100%</td><td class="tc" style="color:#3B82F6;font-weight:700">$2,833</td><td class="tc" style="color:#10B981;font-weight:700">0.049%</td><td class="tc" style="color:#10B981;font-weight:700">7.13%</td></tr></tbody></table>
+  </div>
+  <div class="card"><h3>Solo Target</h3>
+    <table><thead><tr><th class="tl">ETF</th><th class="tc">%</th><th class="tc">ER</th><th class="tc">Fwd</th></tr></thead>
+    <tbody><tr><td style="color:#EC4899;font-weight:700">SCHG</td><td class="tc">35%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc" style="color:#10B981">5.5%</td></tr>
+    <tr><td style="color:#14B8A6;font-weight:700">SCHD</td><td class="tc">30%</td><td class="tc" style="color:#10B981">0.06%</td><td class="tc" style="color:#10B981">9.5%</td></tr>
+    <tr><td style="color:#F59E0B;font-weight:700">AVUV</td><td class="tc">20%</td><td class="tc" style="color:#10B981">0.25%</td><td class="tc" style="color:#10B981">8.0%</td></tr>
+    <tr><td style="color:#6366F1;font-weight:700">VTV</td><td class="tc">15%</td><td class="tc" style="color:#10B981">0.04%</td><td class="tc" style="color:#10B981">7.5%</td></tr>
+    <tr style="border-top:1px solid #334155"><td style="font-weight:700">TOTAL</td><td class="tc" style="font-weight:700">100%</td><td class="tc" style="color:#10B981;font-weight:700">0.099%</td><td class="tc" style="color:#10B981;font-weight:700">7.85%</td></tr></tbody></table>
+  </div>
+</div>
+</div></div>
+
+<!-- HSA -->
+<div class="sec" id="s-hsa">
+<div class="snav">
+  <button class="snb on" onclick="showTab('hsa','overview',this)">Overview</button>
+  <button class="snb" onclick="showTab('hsa','strategy',this)">Strategy</button>
+  <button class="snb" onclick="showTab('hsa','proj',this)">Projections</button>
+</div>
+<div class="wrap">
+<div class="tab on" id="hsa-overview">
+  <h1>HSA</h1>
+  <p class="sub">Family HSA • $8,300/year • 100% WFSPX • Triple tax-free</p>
+  <div class="sg g3"><div class="st"><div class="sl">Annual</div><div class="sv" style="color:#F59E0B">$8,300</div></div><div class="st"><div class="sl">Monthly</div><div class="sv" style="color:#F59E0B">$691</div></div><div class="st"><div class="sl">Fund</div><div class="sv" style="color:#F8FAFC">WFSPX</div></div></div>
+  <div class="card cgrn"><h3 style="color:#86EFAC">Triple Tax Advantage</h3>
+    <table style="margin-top:8px"><thead><tr><th class="tl">Event</th><th class="tc">401(k)</th><th class="tc">Roth</th><th class="tc">HSA</th></tr></thead>
+    <tbody><tr><td>Contributions</td><td class="tc" style="color:#10B981">Free</td><td class="tc" style="color:#EF4444">After-tax</td><td class="tc" style="color:#10B981">Free</td></tr><tr><td>Growth</td><td class="tc" style="color:#F59E0B">Deferred</td><td class="tc" style="color:#10B981">Tax-free</td><td class="tc" style="color:#10B981">Tax-free</td></tr><tr><td>Withdrawal</td><td class="tc" style="color:#EF4444">Taxed</td><td class="tc" style="color:#10B981">Tax-free</td><td class="tc" style="color:#10B981">Tax-free*</td></tr></tbody></table>
+  </div>
+  <div class="fund" style="border-left:3px solid #F59E0B"><div class="fh"><div><span class="ft">WFSPX</span><span style="color:#64748B;font-size:11px;margin-left:8px">100% • ER 0.03%</span></div><div style="text-align:right"><span style="color:#F59E0B;font-weight:700">$691/mo</span></div></div><div class="fd">iShares S&P 500 Index Fund Class K • 10yr: 14.72% • Fwd: 5.0%</div><div class="fgrn">Rock-bottom cost. Identical to VOO/SPY at institutional pricing. Do not change.</div></div>
+</div>
+<div class="tab" id="hsa-strategy">
+  <h2>HSA Strategy</h2>
+  <div class="card">
+    <div class="step"><div class="snum" style="background:#F59E0B">1</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Pay all medical out of pocket</p><p class="fd">Never touch HSA. Let WFSPX compound.</p></div></div>
+    <div class="step"><div class="snum" style="background:#F59E0B">2</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Save every receipt — no time limit</p><p class="fd">IRS has no deadline. 2026 receipt can be reimbursed tax-free in 2044.</p></div></div>
+    <div class="step"><div class="snum" style="background:#F59E0B">3</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">Reimburse yourself at income phase</p><p class="fd">Pull years of receipts. Withdraw tax-free up to total documented expenses.</p></div></div>
+    <div class="step"><div class="snum" style="background:#64748B">4</div><div><p style="color:#F8FAFC;font-size:13px;font-weight:600">After 65 — use for anything</p><p class="fd">Taxed like 401(k) for non-medical. No penalty.</p></div></div>
+  </div>
+</div>
+<div class="tab" id="hsa-proj">
+  <h2>HSA Projections</h2>
+  <div class="card"><table><thead><tr><th class="tl">Year</th><th class="tc">Age</th><th class="tc">5% fwd</th><th class="tc">10% hist</th><th class="tc">14.7% act</th></tr></thead><tbody id="hsa-projtable"></tbody></table></div>
+</div>
+</div></div>
+
+<!-- CALCULATORS -->
+<div class="sec" id="s-calcs">
+<div class="snav">
+  <button class="snb on" onclick="showTab('calcs','w2match',this)">W-2 Match</button>
+  <button class="snb" onclick="showTab('calcs','solocont',this)">Solo Contribution</button>
+  <button class="snb" onclick="showTab('calcs','taxsave',this)">Tax Savings</button>
+  <button class="snb" onclick="showTab('calcs','rbw2',this)">Rebalance W-2</button>
+  <button class="snb" onclick="showTab('calcs','rbsolo',this)">Rebalance Solo</button>
+</div>
+<div class="wrap">
+<div class="tab on" id="calcs-w2match">
+  <h2>W-2 Match Calculator</h2>
+  <p class="sub">Two inputs. Two answers.</p>
+  <div class="icard">
+    <div class="ig2">
+      <div class="iw"><span class="il">Your W-2 Salary $</span><input class="inp" id="c-w2sal" type="number" value="175000" oninput="calcW2Match()"></div>
+      <div class="iw"><span class="il">Employer Match % of Salary</span><input class="inp" id="c-matchpct" type="number" value="6" oninput="calcW2Match()"></div>
+    </div>
+  </div>
+  <div id="w2match-result"></div>
+</div>
+<div class="tab" id="calcs-solocont">
+  <h2>Solo 401(k) Contribution Calculator</h2>
+  <p class="sub">Enter your target — get the exact breakdown and minimum W-2 salary needed</p>
+  <div class="icard">
+    <div class="ig2">
+      <div class="iw"><span class="il">How much do I want to contribute total? $</span><input class="inp" id="c-soloCurr" type="number" value="50000" min="1000" max="70000" step="1000" oninput="calcSolo()"></div>
+      <div class="iw"><span class="il">Spouse W-2 Salary from S-Corp $</span><input class="inp" id="c-spousesal" type="number" value="75000" oninput="calcSolo()"></div>
+    </div>
+    <p style="color:#64748B;font-size:11px;margin-top:8px">2026 cap: $70,000. Employee deferral goes first ($23,500 max). Employer fills rest at 25% of W-2.</p>
+  </div>
+  <div class="calc-result" id="solo-result"></div>
+</div>
+<div class="tab" id="calcs-taxsave">
+  <h2>Tax Savings Calculator</h2>
+  <p class="sub">Every tax-advantaged dollar saves real money</p>
+  <div class="icard">
+    <div class="ig2">
+      <div class="iw"><span class="il">Federal Tax Bracket %</span><input class="inp" id="c-bracket" type="number" value="37" oninput="calcTax()"></div>
+      <div class="iw"><span class="il">State Tax % (if any)</span><input class="inp" id="c-statetax" type="number" value="0" oninput="calcTax()"></div>
+    </div>
+  </div>
+  <div class="calc-result" id="tax-result"></div>
+</div>
+<div class="tab" id="calcs-rbw2">
+  <h2>Rebalance — W-2 401(k)</h2>
+  <p class="sub">Enter current dollar values</p>
+  <div class="icard">
+    <div class="iw" style="margin-bottom:10px"><span class="il">Total Balance $</span><input class="inp" id="rb-w2-total" type="number" value="500000" oninput="calcRbW2()"></div>
+    <div class="rb-row rb-head"><span>Fund</span><span style="text-align:right">Target%</span><span style="text-align:right">Current $</span><span style="text-align:right">Drift</span><span style="text-align:right">Action</span></div>
+    <div id="rb-w2-rows"></div>
+  </div>
+  <div id="rb-w2-summary"></div>
+</div>
+<div class="tab" id="calcs-rbsolo">
+  <h2>Rebalance — Solo 401(k)</h2>
+  <p class="sub">Enter current dollar values</p>
+  <div class="icard">
+    <div class="iw" style="margin-bottom:10px"><span class="il">Total Balance $</span><input class="inp" id="rb-solo-total" type="number" value="70000" oninput="calcRbSolo()"></div>
+    <div class="rb-row rb-head"><span>ETF</span><span style="text-align:right">Target%</span><span style="text-align:right">Current $</span><span style="text-align:right">Drift</span><span style="text-align:right">Action</span></div>
+    <div id="rb-solo-rows"></div>
+  </div>
+  <div id="rb-solo-summary"></div>
+</div>
+</div></div>
+
+<script>
+var fmt=function(v){return v>=1e6?'$'+(v/1e6).toFixed(2)+'M':'$'+Math.round(v).toLocaleString();};
+var fv=function(b,a,r,y){var x=b;for(var i=0;i<y;i++)x=(x+a)*(1+r/100);return x;};
+var g=function(id){var el=document.getElementById(id);return el?parseFloat(el.value)||0:0;};
+
+function showSec(id,btn){
+  var secs=document.querySelectorAll('.sec');
+  for(var i=0;i<secs.length;i++)secs[i].classList.remove('on');
+  var btns=document.querySelectorAll('.tnb');
+  for(var i=0;i<btns.length;i++)btns[i].classList.remove('on');
+  document.getElementById('s-'+id).classList.add('on');
+  btn.classList.add('on');
+  var ft=document.querySelector('#s-'+id+' .tab');
+  var fb=document.querySelector('#s-'+id+' .snb');
+  if(ft){var tabs=document.querySelectorAll('#s-'+id+' .tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('on');ft.classList.add('on');}
+  if(fb){var snbs=document.querySelectorAll('#s-'+id+' .snb');for(var i=0;i<snbs.length;i++)snbs[i].classList.remove('on');fb.classList.add('on');}
+}
+
+function showTab(sec,tab,btn){
+  var s=document.getElementById('s-'+sec);
+  var tabs=s.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('on');
+  var snbs=s.querySelectorAll('.snb');for(var i=0;i<snbs.length;i++)snbs[i].classList.remove('on');
+  document.getElementById(sec+'-'+tab).classList.add('on');
+  btn.classList.add('on');
+  if(tab==='location')setTimeout(initTV,150);
+}
+
+function recalc(){
+  var age=g('g-age')||40;
+  var retAge=Math.max(g('g-retage')||60,age+1);
+  var horizon=retAge-age;
+  var weekly=g('g-weekly')||2500;
+  var w2bal=g('g-w2bal')||500000;
+  var solobal=g('g-solobal')||70000;
+  var hsabal=g('g-hsabal')||0;
+  var spousesal=g('g-spousesal')||75000;
+  var bracket=g('g-bracket')||37;
+  var annual=weekly*52;
+  var w2ann=34000,hsaann=8300;
+  var soloCons=g('solo-cons')||25000;
+  var soloBase=g('solo-base')||50000;
+  var soloOpt=g('solo-opt')||70000;
+
+  var el=document.getElementById('c-spousesal');if(el)el.value=spousesal;
+  var el2=document.getElementById('c-bracket');if(el2)el2.value=bracket;
+
+  document.getElementById('ov-subtitle').textContent='Married Filing Jointly \u2022 '+bracket+'% Bracket \u2022 W-2 + S-Corp \u2022 '+horizon+'-Year Horizon';
+
+  var rawYrs=[Math.round(horizon*0.25),Math.round(horizon*0.5),Math.round(horizon*0.75),horizon];
+  var seen={};var yrs=[];
+  for(var i=0;i<rawYrs.length;i++){if(rawYrs[i]>0&&!seen[rawYrs[i]]){seen[rawYrs[i]]=1;yrs.push(rawYrs[i]);}}
+
+  document.getElementById('ov-stats').innerHTML=[
+    {l:'Current Age',v:age,c:'#F8FAFC'},
+    {l:'Retirement Age',v:retAge,c:'#3B82F6'},
+    {l:'Horizon',v:horizon+' years',c:'#10B981'}
+  ].map(function(s){return '<div class="st"><div class="sl">'+s.l+'</div><div class="sv" style="color:'+s.c+'">'+s.v+'</div></div>';}).join('');
+
+  var ba=document.getElementById('ov-barbellann');if(ba)ba.textContent=fmt(annual);
+  var la=document.getElementById('loc-ann');if(la)la.textContent=fmt(annual);
+  var lt=document.getElementById('loc-total');if(lt)lt.textContent=fmt(annual+w2ann+70000+hsaann+14000);
+
+  var ovrows='';
+  for(var i=0;i<yrs.length;i++){
+    var y=yrs[i];
+    var bv=fv(0,annual,9,y),w2v=fv(w2bal,w2ann,7.13,y),sv=fv(solobal,soloBase,7.85,y),hv=fv(hsabal,hsaann,10,y);
+    var last=(y===horizon);
+    ovrows+='<tr'+(last?' style="border-top:2px solid #334155"':'')+'><td style="color:'+(last?'#FCD34D':'#F8FAFC')+';font-weight:600">Yr '+y+(last?' \u2b50':'')+' </td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#3B82F6">'+fmt(bv)+'</td><td class="tc" style="color:#10B981">'+fmt(w2v+sv)+'</td><td class="tc" style="color:#F59E0B">'+fmt(hv)+'</td><td class="tc" style="color:#FCD34D;font-weight:700">'+fmt(bv+w2v+sv+hv)+'</td></tr>';
+  }
+  document.getElementById('ov-projtable').innerHTML=ovrows;
+
+  document.getElementById('bb-sub').textContent=fmt(weekly)+'/week \u2022 '+fmt(annual)+'/year \u2022 '+horizon+'-year horizon';
+  document.getElementById('bb-stats').innerHTML=[
+    {l:'Weekly',v:fmt(weekly),c:'#3B82F6'},{l:'Annual',v:fmt(annual),c:'#3B82F6'},{l:'Blended ER',v:'0.099%',c:'#10B981'},{l:'Fwd Return',v:'~7.8%',c:'#10B981'}
+  ].map(function(s){return '<div class="st"><div class="sl">'+s.l+'</div><div class="sv" style="color:'+s.c+'">'+s.v+'</div></div>';}).join('');
+
+  var bEtfs=[{t:'SCHG',c:'#EC4899',p:0.35},{t:'SCHD',c:'#14B8A6',p:0.30},{t:'AVUV',c:'#F59E0B',p:0.20},{t:'VXUS',c:'#8B5CF6',p:0.15}];
+  var bids=['bb-schg','bb-schd','bb-avuv','bb-vxus'];
+  for(var i=0;i<bEtfs.length;i++){
+    var e=bEtfs[i];
+    var wk=document.getElementById(bids[i]+'-wk');var yr=document.getElementById(bids[i]+'-yr');
+    if(wk)wk.textContent=fmt(weekly*e.p)+'/wk';if(yr)yr.textContent=fmt(annual*e.p)+'/yr';
+  }
+  var autoRows='';
+  for(var i=0;i<bEtfs.length;i++){var e=bEtfs[i];autoRows+='<tr><td style="color:'+e.c+';font-weight:700">'+e.t+'</td><td class="tc">'+fmt(weekly*e.p/2)+'</td><td class="tc">'+fmt(weekly*e.p/2)+'</td><td class="tc" style="color:#F8FAFC;font-weight:600">'+fmt(weekly*e.p)+'</td><td class="tc" style="color:#94A3B8">'+fmt(annual*e.p)+'</td></tr>';}
+  autoRows+='<tr style="border-top:1px solid #334155"><td style="color:#F8FAFC;font-weight:700">TOTAL</td><td class="tc" style="color:#3B82F6;font-weight:700">'+fmt(weekly/2)+'</td><td class="tc" style="color:#3B82F6;font-weight:700">'+fmt(weekly/2)+'</td><td class="tc" style="color:#3B82F6;font-weight:700">'+fmt(weekly)+'</td><td class="tc" style="color:#3B82F6;font-weight:700">'+fmt(annual)+'</td></tr>';
+  document.getElementById('bb-autotable').innerHTML=autoRows;
+
+  document.getElementById('bb-proj-sub').textContent='Starting $0 \u2022 '+fmt(annual)+'/year \u2022 '+horizon+'-year horizon';
+  var bprows='';
+  for(var i=0;i<yrs.length;i++){var y=yrs[i];bprows+='<tr><td style="color:#F8FAFC;font-weight:600">Year '+y+'</td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#64748B">'+fmt(annual*y)+'</td><td class="tc">'+fmt(fv(0,annual,7,y))+'</td><td class="tc" style="color:#10B981;font-weight:700">'+fmt(fv(0,annual,9,y))+'</td><td class="tc">'+fmt(fv(0,annual,11,y))+'</td></tr>';}
+  document.getElementById('bb-projtable').innerHTML=bprows;
+
+  var divYrs=[1];
+  for(var i=0;i<yrs.length;i++){if(yrs[i]!==1)divYrs.push(yrs[i]);}
+  var divrows='';
+  for(var i=0;i<divYrs.length;i++){
+    var y=divYrs[i];
+    var port=(y===1?annual*1.04:fv(0,annual,9,y));
+    var schdY=0.0105*Math.pow(1.06,y);
+    var blY=0.00175+schdY+0.00360+0.00450;
+    var annDiv=port*blY;
+    var hi=(y>=horizon*0.7);
+    divrows+='<tr><td style="color:#F8FAFC;font-weight:600">Year '+y+'</td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#64748B">'+fmt(port)+'</td><td class="tc" style="color:#94A3B8">'+(blY*100).toFixed(2)+'%</td><td class="tc" style="color:'+(hi?'#10B981':'#94A3B8')+';font-weight:'+(hi?700:400)+'">'+fmt(annDiv)+'</td><td class="tc" style="color:'+(hi?'#10B981':'#94A3B8')+';font-weight:'+(hi?700:400)+'">'+fmt(annDiv/12)+'</td></tr>';
+  }
+  document.getElementById('bb-divtable').innerHTML=divrows;
+
+  var q1=Math.round(horizon*0.25),q2=Math.round(horizon*0.5),q3=Math.round(horizon*0.75);
+  var milestones=[
+    {y:0,c:'#3B82F6',t:'Now \u2014 Age '+age,d:'Set up auto-invest. DRIP on. Swap partners ready. Execute backdoor Roth blockers.'},
+    {y:Math.min(3,q1),c:'#8B5CF6',t:'Year '+Math.min(3,q1)+' \u2014 Age '+(age+Math.min(3,q1)),d:'First correction likely. Stay invested. Harvest losses if 15%+ down.'},
+    {y:q1,c:'#10B981',t:'Year '+q1+' \u2014 Age '+(age+q1),d:'Portfolio ~'+fmt(fv(0,annual,9,q1))+'. First rebalance review.'},
+    {y:q2,c:'#F59E0B',t:'Year '+q2+' \u2014 Age '+(age+q2),d:'Portfolio ~'+fmt(fv(0,annual,9,q2))+'. Mid-point check. Consider Phase 2.'},
+    {y:q3,c:'#EC4899',t:'Year '+q3+' \u2014 Age '+(age+q3),d:'Portfolio ~'+fmt(fv(0,annual,9,q3))+'. Turn SCHD DRIP off. Collect income. HSA reimbursements.'},
+    {y:horizon,c:'#10B981',t:'Year '+horizon+' \u2014 Age '+retAge+' \u2b50 Retirement',d:'Barbell ~'+fmt(fv(0,annual,9,horizon))+'. 401(k) ~'+fmt(fv(w2bal,w2ann,7.13,horizon)+fv(solobal,soloBase,7.85,horizon))+'. Full income mode.'}
+  ];
+  var seen2={};var uniq=[];
+  for(var i=0;i<milestones.length;i++){if(!seen2[milestones[i].y]){seen2[milestones[i].y]=1;uniq.push(milestones[i]);}}
+  document.getElementById('bb-timeline').innerHTML=uniq.map(function(m){return '<div class="tnode"><div class="tdot" style="background:'+m.c+'"></div><h3 style="color:'+m.c+'">'+m.t+'</h3><p class="fd">'+m.d+'</p></div>';}).join('');
+
+  document.getElementById('w2-sub').textContent=fmt(w2bal)+' balance \u2022 $23,500 + $10,500 match = $34,000/yr';
+  document.getElementById('w2-stats').innerHTML=[{l:'Balance',v:fmt(w2bal),c:'#F8FAFC'},{l:'Your Contrib',v:'$23,500/yr',c:'#3B82F6'},{l:'Match',v:'$10,500/yr',c:'#10B981'},{l:'Blended Fwd',v:'7.13%',c:'#10B981'}].map(function(s){return '<div class="st"><div class="sl">'+s.l+'</div><div class="sv" style="color:'+s.c+'">'+s.v+'</div></div>';}).join('');
+  var w2p=[['w2-vscpx',0.25],['w2-vivix',0.25],['w2-vtisf',0.25],['w2-vginf',0.15],['w2-vemrx',0.10]];
+  for(var i=0;i<w2p.length;i++){var el=document.getElementById(w2p[i][0]);if(el)el.textContent=fmt(w2bal*w2p[i][1]);}
+
+  document.getElementById('k401-proj-sub').textContent='W-2 starting '+fmt(w2bal)+' + Solo starting '+fmt(solobal)+' \u2022 '+horizon+'-year horizon';
+  var w2rows='',solorows='',combrows='';
+  for(var i=0;i<yrs.length;i++){
+    var y=yrs[i];var last=(y===horizon);
+    var w2v=fv(w2bal,w2ann,7.13,y);
+    var sc=fv(solobal,soloCons,7.85,y),sb=fv(solobal,soloBase,7.85,y),so=fv(solobal,soloOpt,7.85,y);
+    var sty=(last?' style="border-top:2px solid #334155"':'');
+    var yc=(last?'#FCD34D':'#F8FAFC');
+    w2rows+='<tr'+sty+'><td style="color:'+yc+';font-weight:600">Year '+y+(last?' \u2b50':'')+'</td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#10B981;font-weight:'+(last?700:400)+'">'+fmt(w2v)+'</td></tr>';
+    solorows+='<tr'+sty+'><td style="color:'+yc+';font-weight:600">Year '+y+(last?' \u2b50':'')+'</td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#EF4444">'+fmt(sc)+'</td><td class="tc" style="color:#F59E0B;font-weight:700">'+fmt(sb)+'</td><td class="tc" style="color:#10B981;font-weight:'+(last?700:400)+'">'+fmt(so)+'</td></tr>';
+    combrows+='<tr'+sty+'><td style="color:'+yc+';font-weight:600">Year '+y+(last?' \u2b50':'')+'</td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#EF4444">'+fmt(w2v+sc)+'</td><td class="tc" style="color:#F59E0B;font-weight:700">'+fmt(w2v+sb)+'</td><td class="tc" style="color:#10B981;font-weight:'+(last?700:400)+'">'+fmt(w2v+so)+'</td></tr>';
+  }
+  document.getElementById('k401-w2table').innerHTML=w2rows;
+  document.getElementById('k401-solotable').innerHTML=solorows;
+  document.getElementById('k401-combinedtable').innerHTML=combrows;
+
+  document.getElementById('solo-sub').textContent=fmt(solobal)+' balance \u2022 Self-directed Fidelity \u2022 SCHG/SCHD/AVUV/VTV';
+  document.getElementById('solo-stats').innerHTML=[{l:'Balance',v:fmt(solobal),c:'#F8FAFC'},{l:'Max Annual',v:'$70,000',c:'#8B5CF6'},{l:'Blended ER',v:'0.099%',c:'#10B981'},{l:'Blended Fwd',v:'7.85%',c:'#10B981'}].map(function(s){return '<div class="st"><div class="sl">'+s.l+'</div><div class="sv" style="color:'+s.c+'">'+s.v+'</div></div>';}).join('');
+  var sp=[['solo-schg',0.35],['solo-schd',0.30],['solo-avuv',0.20],['solo-vtv',0.15]];
+  for(var i=0;i<sp.length;i++){var el=document.getElementById(sp[i][0]);if(el)el.textContent=fmt(solobal*sp[i][1]);}
+
+  var hrows='';
+  for(var i=0;i<yrs.length;i++){var y=yrs[i];hrows+='<tr><td style="color:#F8FAFC;font-weight:600">Year '+y+'</td><td class="tc" style="color:#94A3B8">'+(age+y)+'</td><td class="tc" style="color:#94A3B8">'+fmt(fv(hsabal,hsaann,5,y))+'</td><td class="tc" style="color:#F59E0B">'+fmt(fv(hsabal,hsaann,10,y))+'</td><td class="tc" style="color:#10B981">'+fmt(fv(hsabal,hsaann,14.72,y))+'</td></tr>';}
+  document.getElementById('hsa-projtable').innerHTML=hrows;
+
+  calcW2Match();calcSolo();calcTax();calcRbW2();calcRbSolo();
+}
+
+function calcW2Match(){
+  var sal=g('c-w2sal')||175000;
+  var mpct=g('c-matchpct')||6;
+  var bracket=g('g-bracket')||37;
+  var empMax=23500;
+  var matchFloor=sal*mpct/100;
+  var irsMaxPct=(empMax/sal*100);
+  var taxSaveFloor=matchFloor*bracket/100;
+  var taxSaveMax=empMax*bracket/100;
+  var instantReturn=matchFloor>0?((matchFloor+taxSaveFloor)/matchFloor*100).toFixed(0):0;
+  document.getElementById('w2match-result').innerHTML='<div style="background:#1E3A5F;border-radius:10px;padding:16px;margin-bottom:10px;border:1px solid #2563EB"><p style="color:#93C5FD;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:12px">Target 1 \u2014 Capture Full Match</p><div class="cr-row"><span class="cr-label">Contribute at least</span><span class="cr-val" style="color:#FCD34D;font-size:20px;font-weight:800">'+mpct+'% of salary</span></div><div class="cr-row"><span class="cr-label">In dollar terms</span><span class="cr-val" style="color:#FCD34D;font-size:16px">'+fmt(matchFloor)+'/yr</span></div><div class="cr-row"><span class="cr-label">Free employer money</span><span class="cr-val" style="color:#10B981">'+fmt(matchFloor)+'/yr FREE</span></div><div class="cr-row"><span class="cr-label">Tax saved ('+bracket+'%)</span><span class="cr-val" style="color:#10B981">'+fmt(taxSaveFloor)+'/yr</span></div><div class="cr-row" style="border:none"><span class="cr-label">Instant return</span><span class="cr-val" style="color:#10B981;font-size:16px">'+instantReturn+'%</span></div></div><div style="background:#1E293B;border-radius:10px;padding:16px;margin-bottom:10px;border:1px solid #334155"><p style="color:#94A3B8;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:12px">Target 2 \u2014 Hit IRS Max ($'+empMax.toLocaleString()+')</p><div class="cr-row"><span class="cr-label">Contribute</span><span class="cr-val" style="color:#8B5CF6;font-size:20px;font-weight:800">'+irsMaxPct.toFixed(1)+'% of salary</span></div><div class="cr-row"><span class="cr-label">In dollar terms</span><span class="cr-val" style="color:#8B5CF6;font-size:16px">'+fmt(empMax)+'/yr</span></div><div class="cr-row"><span class="cr-label">Additional above match floor</span><span class="cr-val" style="color:#8B5CF6">'+fmt(empMax-matchFloor)+'/yr more</span></div><div class="cr-row" style="border:none"><span class="cr-label">Total tax saved at IRS max</span><span class="cr-val" style="color:#10B981">'+fmt(taxSaveMax)+'/yr</span></div></div><div style="background:#14532D;border-radius:8px;padding:12px;border:1px solid #166534"><p style="color:#86EFAC;font-size:12px;font-weight:700;margin-bottom:4px">Two-step approach</p><p style="color:#94A3B8;font-size:11px;line-height:1.7">Step 1: Always hit '+mpct+'% \u2014 captures free match. Below this = leaving money on the table.<br>Step 2: Push to '+irsMaxPct.toFixed(1)+'% if possible \u2014 every extra dollar still saves '+bracket+'\u00a2 in taxes.</p></div>';
+}
+
+function calcSolo(){
+  var target=Math.min(Math.max(g('c-soloCurr')||50000,1),70000);
+  var bracket=g('g-bracket')||37;
+  var spousesal=g('c-spousesal')||g('g-spousesal')||75000;
+  var empMax=23500;
+  var empPortion=Math.min(target,empMax);
+  var erPortion=Math.max(0,target-empMax);
+  var minW2=erPortion>0?erPortion/0.25:0;
+  var taxSaved=target*bracket/100;
+  var erTaxSaved=erPortion*bracket/100;
+  var salOk=spousesal>=minW2;
+  var maxPossible=Math.min(empMax+Math.floor(spousesal*0.25),70000);
+  document.getElementById('solo-result').innerHTML='<div style="background:#1E293B;border-radius:10px;padding:16px;margin-bottom:10px"><p style="color:#93C5FD;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:12px">Breakdown for '+fmt(target)+'</p><div class="cr-row"><span class="cr-label" style="font-weight:700">Employee Deferral (you \u2014 always first)</span><span class="cr-val" style="color:#8B5CF6;font-size:15px">'+fmt(empPortion)+'</span></div><div class="cr-row"><span class="cr-label" style="font-weight:700">Employer Profit Sharing (S-Corp)</span><span class="cr-val" style="color:#8B5CF6;font-size:15px">'+fmt(erPortion)+'</span></div><div class="cr-row"><span class="cr-label">Minimum W-2 salary needed (employer \xf725%)</span><span class="cr-val" style="color:#FCD34D;font-size:16px">'+(erPortion>0?fmt(minW2):'Not needed')+'</span></div><div class="cr-row"><span class="cr-label">Current spouse W-2</span><span class="cr-val" style="color:'+(salOk?'#10B981':'#EF4444')+'">'+fmt(spousesal)+' '+(salOk?'\u2705':'\u274c Too low')+'</span></div>'+(salOk?'':'<div class="cr-row" style="border:none"><span class="cr-label">Increase W-2 by</span><span class="cr-val" style="color:#EF4444">'+fmt(minW2-spousesal)+'</span></div>')+'</div><div style="background:#14532D;border-radius:10px;padding:16px;margin-bottom:10px;border:1px solid #166534"><p style="color:#86EFAC;font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:12px">Tax Savings</p><div class="cr-row"><span class="cr-label">Total deduction ('+bracket+'%)</span><span class="cr-val" style="color:#10B981;font-size:16px">'+fmt(taxSaved)+'/yr saved</span></div><div class="cr-row"><span class="cr-label">S-Corp employer deduction</span><span class="cr-val" style="color:#10B981">'+fmt(erTaxSaved)+'/yr</span></div><div class="cr-row" style="border:none"><span class="cr-label">Effective out-of-pocket</span><span class="cr-val" style="color:#F8FAFC">'+fmt(target-taxSaved)+'/yr</span></div></div><div style="background:#1E293B;border-radius:10px;padding:14px;border:1px solid #334155"><p style="color:#94A3B8;font-size:11px;font-weight:700;margin-bottom:8px">Max possible with current salary of '+fmt(spousesal)+'</p><div class="cr-row"><span class="cr-label">Employee max</span><span class="cr-val" style="color:#8B5CF6">'+fmt(empMax)+'</span></div><div class="cr-row"><span class="cr-label">Employer max (25% \xd7 '+fmt(spousesal)+')</span><span class="cr-val" style="color:#8B5CF6">'+fmt(Math.floor(spousesal*0.25))+'</span></div><div class="cr-row" style="border:none"><span class="cr-label">Total max possible</span><span class="cr-val" style="color:#10B981;font-size:16px">'+fmt(maxPossible)+'</span></div></div>';
+}
+
+function calcTax(){
+  var bracket=g('c-bracket')||g('g-bracket')||37;
+  var state=g('c-statetax')||0;
+  var total=bracket+state;
+  var spousesal=g('g-spousesal')||75000;
+  var w2emp=23500,w2match=10500,soloEmp=23500,soloEr=Math.min(spousesal*0.25,46500),hsa=8300,bdroth=14000;
+  var rows=[
+    {l:'W-2 401(k) \u2014 Your Contribution',amt:w2emp,note:'Pre-tax deduction',tax:true},
+    {l:'W-2 401(k) \u2014 Employer Match',amt:w2match,note:'Free \u2014 sheltered',tax:false},
+    {l:'Solo 401(k) \u2014 Employee Deferral',amt:soloEmp,note:'Pre-tax deduction',tax:true},
+    {l:'Solo 401(k) \u2014 Employer (S-Corp deduction)',amt:soloEr,note:'Business expense',tax:true},
+    {l:'HSA (Family)',amt:hsa,note:'Pre-tax deduction',tax:true},
+    {l:'Backdoor Roth x2',amt:bdroth,note:'No tax now \u2014 tax-free forever',tax:false}
+  ];
+  var totalShielded=w2emp+soloEmp+soloEr+hsa;
+  var totalSaved=totalShielded*total/100;
+  var rowHTML='<div style="display:grid;grid-template-columns:1fr auto auto;gap:4px 12px;margin-bottom:10px">';
+  rowHTML+='<span style="color:#64748B;font-size:10px;font-weight:600;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid #334155">Contribution</span><span style="color:#64748B;font-size:10px;font-weight:600;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid #334155;text-align:right">Amount</span><span style="color:#64748B;font-size:10px;font-weight:600;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid #334155;text-align:right">Tax Saved</span>';
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    rowHTML+='<span style="color:#94A3B8;font-size:12px;padding:5px 0;border-bottom:1px solid #1E293B">'+r.l+'<br><span style="font-size:10px;color:#475569">'+r.note+'</span></span>';
+    rowHTML+='<span style="color:#F8FAFC;font-weight:700;font-size:12px;text-align:right;padding:5px 0;border-bottom:1px solid #1E293B">'+fmt(r.amt)+'</span>';
+    rowHTML+='<span style="color:'+(r.tax?'#10B981':'#64748B')+';font-weight:700;font-size:12px;text-align:right;padding:5px 0;border-bottom:1px solid #1E293B">'+(r.tax?'~'+fmt(r.amt*total/100):'\u2014')+'</span>';
+  }
+  rowHTML+='</div>';
+  rowHTML+='<div style="background:#14532D;border-radius:8px;padding:14px;border:1px solid #166534"><div class="cr-row"><span class="cr-label" style="font-weight:700">Total Tax Saved This Year</span><span class="cr-val" style="color:#10B981;font-size:20px">'+fmt(totalSaved)+'</span></div><div class="cr-row" style="border:none"><span class="cr-label">'+fmt(totalSaved/12)+'/month the IRS does not get</span><span class="cr-val" style="color:#FCD34D">20yr compounded: ~'+fmt(fv(0,totalSaved,9,20))+'</span></div></div>';
+  document.getElementById('tax-result').innerHTML=rowHTML;
+}
+
+var W2F=[{t:'VSCPX',pct:25,c:'#F59E0B'},{t:'VIVIX',pct:25,c:'#14B8A6'},{t:'VTISF',pct:25,c:'#8B5CF6'},{t:'VGINF',pct:15,c:'#3B82F6'},{t:'VEMRX',pct:10,c:'#10B981'}];
+var SF=[{t:'SCHG',pct:35,c:'#EC4899'},{t:'SCHD',pct:30,c:'#14B8A6'},{t:'AVUV',pct:20,c:'#F59E0B'},{t:'VTV',pct:15,c:'#6366F1'}];
+
+function buildRb(funds,pfx,totId,rowId,sumId){
+  var total=g(totId);
+  var html='';
+  for(var i=0;i<funds.length;i++){
+    var f=funds[i];
+    html+='<div class="rb-row"><span style="color:'+f.c+';font-weight:700">'+f.t+'</span><span style="text-align:right;color:#94A3B8">'+f.pct+'%</span><input class="rb-inp" id="'+pfx+'-inp-'+i+'" type="number" value="'+Math.round(total*f.pct/100)+'" oninput="doRb(\''+pfx+'\',\''+totId+'\',\''+rowId+'\',\''+sumId+'\')"><span id="'+pfx+'-drift-'+i+'"></span><span id="'+pfx+'-action-'+i+'"></span></div>';
+  }
+  document.getElementById(rowId).innerHTML=html;
+  doRb(pfx,totId,rowId,sumId);
+}
+
+function doRb(pfx,totId,rowId,sumId){
+  var funds=(pfx==='rbw2'?W2F:SF);
+  var total=g(totId);
+  var buys=[],sells=[];
+  for(var i=0;i<funds.length;i++){
+    var f=funds[i];
+    var inp=document.getElementById(pfx+'-inp-'+i);
+    var curr=inp?parseFloat(inp.value)||0:0;
+    var target=total*f.pct/100;
+    var drift=curr-target;
+    var driftPct=total>0?drift/total*100:0;
+    var dEl=document.getElementById(pfx+'-drift-'+i);
+    var aEl=document.getElementById(pfx+'-action-'+i);
+    if(!dEl||!aEl)continue;
+    var abs=Math.abs(driftPct);
+    dEl.className=(abs<5?'drift-grn':abs<10?'drift-yel':'drift-red');
+    dEl.textContent=(driftPct>=0?'+':'')+driftPct.toFixed(1)+'%';
+    if(Math.abs(drift)<50){aEl.className='action-ok';aEl.textContent='OK';}
+    else if(drift<0){aEl.className='action-buy';aEl.textContent='BUY '+fmt(Math.abs(drift));buys.push({t:f.t,amt:Math.abs(drift),c:f.c});}
+    else{aEl.className='action-sell';aEl.textContent='SELL '+fmt(drift);sells.push({t:f.t,amt:drift,c:f.c});}
+  }
+  var sumEl=document.getElementById(sumId);if(!sumEl)return;
+  if(!buys.length&&!sells.length){sumEl.innerHTML='<div class="card cgrn"><h3 style="color:#86EFAC">Balanced</h3><p style="color:#94A3B8;font-size:12px;margin-top:4px">All funds within 5% of target.</p></div>';return;}
+  var sh='<div class="card"><h3 style="margin-bottom:10px">Trade List</h3>';
+  for(var i=0;i<sells.length;i++)sh+='<div class="cr-row"><span style="color:'+sells[i].c+';font-weight:700">SELL '+sells[i].t+'</span><span style="color:#EF4444;font-weight:700">'+fmt(sells[i].amt)+'</span></div>';
+  for(var i=0;i<buys.length;i++)sh+='<div class="cr-row"><span style="color:'+buys[i].c+';font-weight:700">BUY '+buys[i].t+'</span><span style="color:#10B981;font-weight:700">'+fmt(buys[i].amt)+'</span></div>';
+  sh+='<p style="color:#64748B;font-size:11px;margin-top:8px">Tax-free inside 401(k).</p></div>';
+  sumEl.innerHTML=sh;
+}
+
+function calcRbW2(){if(!document.getElementById('rbw2-inp-0'))buildRb(W2F,'rbw2','rb-w2-total','rb-w2-rows','rb-w2-summary');else doRb('rbw2','rb-w2-total','rb-w2-rows','rb-w2-summary');}
+function calcRbSolo(){if(!document.getElementById('rbsolo-inp-0'))buildRb(SF,'rbsolo','rb-solo-total','rb-solo-rows','rb-solo-summary');else doRb('rbsolo','rb-solo-total','rb-solo-rows','rb-solo-summary');}
+
+// TradingView — modern embed widget approach (tv.js is deprecated)
+var tvDone=false;
+function initTV(){
+  if(tvDone)return;
+  tvDone=true;
+  // Market overview table — all tickers, compact
+  // Note: institutional CITs (VGINF) not on TradingView; VOO used as S&P 500 proxy
+  var wc=document.getElementById('tv-widgets');
+  if(wc){
+    wc.innerHTML='';
+    var moContainer=document.createElement('div');
+    moContainer.className='tradingview-widget-container';
+    var moWidget=document.createElement('div');
+    moWidget.className='tradingview-widget-container__widget';
+    moContainer.appendChild(moWidget);
+    var mos=document.createElement('script');
+    mos.type='text/javascript';
+    mos.src='https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+    mos.async=true;
+    mos.textContent=JSON.stringify({
+      colorTheme:'dark',dateRange:'1D',showChart:false,locale:'en',
+      isTransparent:true,showSymbolLogo:true,showFloatingTooltip:false,
+      width:'100%',height:350,
+      tabs:[
+        {title:'Core Holdings',symbols:[
+          {s:'SCHG',d:'SCHG — Schwab US Large-Cap Growth ETF'},
+          {s:'SCHD',d:'SCHD — Schwab US Dividend Equity ETF'},
+          {s:'AVUV',d:'AVUV — Avantis US Small Cap Value ETF'},
+          {s:'VXUS',d:'VXUS — Vanguard Total Intl Stock ETF'},
+          {s:'VTV', d:'VTV — Vanguard Value ETF'},
+          {s:'VOO', d:'VOO — Vanguard S&P 500 ETF'}
+        ]},
+        {title:'TLH Swaps',symbols:[
+          {s:'VUG', d:'VUG — Vanguard Growth ETF (swap SCHG)'},
+          {s:'VYM', d:'VYM — Vanguard High Div Yield ETF (swap SCHD)'},
+          {s:'DFSV',d:'DFSV — DFA US Small Cap Value ETF (swap AVUV)'},
+          {s:'IXUS',d:'IXUS — iShares Core MSCI Total Intl (swap VXUS)'}
+        ]}
+      ]
+    });
+    moContainer.appendChild(mos);
+    wc.appendChild(moContainer);
+  }
+}
+
+recalc();
+</script>
+</body>
+</html>
